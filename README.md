@@ -22,7 +22,8 @@
 
 | Column                | Type          | Options           |
 | --------------------- | ------------- | ----------------- |
-| nick_name             | references    | foreign_key: true |
+| user                  | references    | foreign_key: true |
+| nick_name             | string        | null: false       |
 | name                  | string        | null: false       |
 | explanation           | text          | null: false       |
 | category_id           | integer       | null: false       |
@@ -35,23 +36,23 @@
 ### Association
 
 - belongs_to :user
-- has_one :destination
 - has_one :purchase
 
 ##  destinationテーブル
 
-| Column          | Type    | Options     |
-| --------------- | ------- | ----------- |
-| postal_code     | string  | null: false |
-| prefecture_id   | integer | null: false |
-| city_id         | integer | null: false |
-| address         | string  | null: false |
-| building        | string  |             |
-| phone_number    | string  | null: false |
+| Column          | Type       | Options           |
+| --------------- | ---------- | ----------------- |
+| purchase        | references | foreign_key: true |
+| postal_code     | string     | null: false       |
+| prefecture_id   | integer    | null: false       |
+| city            | string     | null: false       |
+| address         | string     | null: false       |
+| building        | string     |                   |
+| phone_number    | string     | null: false       |
 
 ### Association
 
-- has_one :purchase
+- belongs_to :purchase
 
 
 ##  purchaseテーブル
@@ -65,6 +66,6 @@
 
 - belongs_to :user
 - belongs_to :item
-- belongs_to :destination
+- has_one :destination
 
 
