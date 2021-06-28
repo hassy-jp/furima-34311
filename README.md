@@ -16,21 +16,21 @@
 ### Association
 
 - has_many :items
-- has_many :destinations
 - has_many :purchases
 
 ## items テーブル
 
-| Column                | Type          | Options     |
-| --------------------- | ------------- | ----------- |
-| name                  | string        | null: false |
-| explanation           | text          | null: false |
-| category_id           | integer       | null: false |
-| condition_id          | integer       | null: false |
-| shipping_fee_id       | integer       | null: false |
-| prefecture_id         | integer       | null: false |
-| scheduled_delivery_id | integer       | null: false |
-| price                 | integer       | null: false |
+| Column                | Type          | Options           |
+| --------------------- | ------------- | ----------------- |
+| nick_name             | references    | foreign_key: true |
+| name                  | string        | null: false       |
+| explanation           | text          | null: false       |
+| category_id           | integer       | null: false       |
+| condition_id          | integer       | null: false       |
+| shipping_fee_id       | integer       | null: false       |
+| prefecture_id         | integer       | null: false       |
+| scheduled_delivery_id | integer       | null: false       |
+| price                 | integer       | null: false       |
 
 ### Association
 
@@ -40,19 +40,17 @@
 
 ##  destinationテーブル
 
-| Column          | Type    | Options                        |
-| --------------- | ------- | ------------------------------ |
-| postal_code_id  | integer | null: false                    |
-| prefecture_id   | integer | null: false                    |
-| city_id         | integer | null: false                    |
-| address_id      | integer | null: false                    |
-| building_id     | integer |                                |
-| phone_number_id | integer | null: false                    |
+| Column          | Type    | Options     |
+| --------------- | ------- | ----------- |
+| postal_code     | string  | null: false |
+| prefecture_id   | integer | null: false |
+| city_id         | integer | null: false |
+| address         | string  | null: false |
+| building        | string  |             |
+| phone_number    | string  | null: false |
 
 ### Association
 
-- belongs_to :user
-- belongs_to :item
 - has_one :purchase
 
 
@@ -62,7 +60,6 @@
 | ----------- | ---------- | ----------------- |
 | user        | references | foreign_key: true |
 | item        | references | foreign_key: true |
-| destination | references | foreign_key: true |
 
 ### Association
 
